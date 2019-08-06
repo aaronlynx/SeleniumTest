@@ -20,6 +20,8 @@ public class MainPage {
 	By logOut = By.xpath("//button[@class='ts-Button ts-Button--theme-link-unstyled ts-Button--medium']");
 	By firstRecord = By.xpath("//tbody//tr[1]");
 	By recordTitle = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[4]/div[1]/div[1]");
+	By changePassword = By.xpath("//div[@class='ts-AdminPageHeader__account-change-password']");
+	By currentPassword = By.xpath("//input[@id='ts-ValidationInput-44']");
 	
 	
 	
@@ -81,4 +83,23 @@ public class MainPage {
 	public void clickFiveRecords() {
 		
 	}
+	
+	public void clickChangePassword() {
+		WebElement element = driver.findElement(changePassword);
+		Actions actions = new Actions(driver);
+		actions.moveToElement(element).click().perform();
+		
+	}
+	
+	public boolean isCurrentPasswordPresent() {
+		try {
+			driver.findElement(currentPassword).isDisplayed();
+			return true;
+		}
+		catch(org.openqa.selenium.NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	
 }
