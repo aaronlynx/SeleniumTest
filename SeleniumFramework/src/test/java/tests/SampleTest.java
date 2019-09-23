@@ -12,6 +12,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.LoginPage;
 import pages.MainPage;
 
@@ -26,8 +28,9 @@ public class SampleTest {
 	@BeforeTest
 	public void setup() {
 		
-		String projectPath =  System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver/chromedriver.exe");
+		//String projectPath =  System.getProperty("user.dir");
+		//System.setProperty("webdriver.chrome.driver", projectPath+"/drivers/chromedriver/chromedriver.exe");
+		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -97,7 +100,7 @@ public class SampleTest {
 		
 	}
 	
-	@Test(description = "Log out")
+	/*@Test(description = "Log out")
 	public void LogOut() {
 		LoginPage logintest = new LoginPage(driver);
 		driver.get(adminPanelLink);
@@ -108,7 +111,7 @@ public class SampleTest {
 		mainpage.clickLogout();
 		Assert.assertTrue(logintest.isPageTitleVisible());
 		
-	}
+	}*/
 	
 	@Test(description = "Click first record")
 	public void ViewRecord() {
@@ -121,6 +124,19 @@ public class SampleTest {
 		mainpage.clickFirstRecord();
 		Assert.assertTrue(mainpage.isRecordsTitlePresent());
 		driver.navigate().back();
+		
+		
+	}
+	
+	@Test(description = "Click Change Password")
+	public void ClickPassword() {
+		LoginPage logintest = new LoginPage(driver);
+		driver.get(adminPanelLink);
+		logintest.setUsername("agent");
+		logintest.setPassword("3H9vk6&#RW6y");
+		logintest.clickLogin();
+		MainPage mainpage = new MainPage(driver);
+		mainpage.clickChangePassword();
 		
 		
 	}
