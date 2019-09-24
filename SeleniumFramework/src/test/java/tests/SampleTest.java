@@ -22,7 +22,7 @@ public class SampleTest {
 	
 	WebDriver driver;
 	Actions actions;
-	String adminPanelLink = "https://corn-dev-stepup.truststamp.net/N20NFsfb9-admin.html";
+	String adminPanelLink = "https://corn-staging-stepup.truststamp.net/N20NFsfb9-admin.html";
 	
 	
 	@BeforeTest
@@ -36,7 +36,7 @@ public class SampleTest {
 		driver.manage().window().maximize();
 	}
 	
-	
+	/*
 	@Test(description = "Test login correct username and password")
 	public void LoginCorrect() {
 		
@@ -44,7 +44,7 @@ public class SampleTest {
 		LoginPage logintest = new LoginPage(driver);
 		driver.get(adminPanelLink);
 		logintest.setUsername("agent");
-		logintest.setPassword("3H9vk6&#RW6y");
+		logintest.setPassword("4H0vk7&#RW7y");
 		logintest.clickLogin();
 		MainPage mainpage = new MainPage(driver);
 		Assert.assertTrue(mainpage.ispageTitlePresent()); //checks an element inside mainpage
@@ -56,7 +56,7 @@ public class SampleTest {
 		LoginPage logintest = new LoginPage(driver);
 		driver.get(adminPanelLink);
 		logintest.setUsername("user");
-		logintest.setPassword("3H9vk6&#RW6y");
+		logintest.setPassword("4H0vk7&#RW7y");
 		logintest.clickLogin();
 		MainPage mainpage = new MainPage(driver);
 		Assert.assertFalse(mainpage.ispageTitlePresent());//checks an element inside mainpage
@@ -97,28 +97,17 @@ public class SampleTest {
 		Assert.assertFalse(mainpage.ispageTitlePresent());
 		//String text = String.valueOf(mainpage.ispageTitlePresent());
 		//System.out.println(text);
-		
+	
 	}
 	
-	/*@Test(description = "Log out")
-	public void LogOut() {
-		LoginPage logintest = new LoginPage(driver);
-		driver.get(adminPanelLink);
-		logintest.setUsername("agent");
-		logintest.setPassword("3H9vk6&#RW6y");
-		logintest.clickLogin();
-		MainPage mainpage = new MainPage(driver);
-		mainpage.clickLogout();
-		Assert.assertTrue(logintest.isPageTitleVisible());
-		
-	}*/
+
 	
 	@Test(description = "Click first record")
 	public void ViewRecord() {
 		LoginPage logintest = new LoginPage(driver);
 		driver.get(adminPanelLink);
 		logintest.setUsername("agent");
-		logintest.setPassword("3H9vk6&#RW6y");
+		logintest.setPassword("4H0vk7&#RW7y");
 		logintest.clickLogin();
 		MainPage mainpage = new MainPage(driver);
 		mainpage.clickFirstRecord();
@@ -126,20 +115,49 @@ public class SampleTest {
 		driver.navigate().back();
 		
 		
-	}
-	
+	}*/
+	/*
 	@Test(description = "Click Change Password")
 	public void ClickPassword() {
 		LoginPage logintest = new LoginPage(driver);
 		driver.get(adminPanelLink);
 		logintest.setUsername("agent");
-		logintest.setPassword("3H9vk6&#RW6y");
+		logintest.setPassword("4H0vk7&#RW7y");
 		logintest.clickLogin();
 		MainPage mainpage = new MainPage(driver);
 		mainpage.clickChangePassword();
 		
 		
+	}*/
+	
+	@Test(description = "Succesfully click 5 records")
+	public void ClickFiveRecords()
+	{
+		LoginPage logintest = new LoginPage(driver);
+		driver.get(adminPanelLink);
+		logintest.setUsername("agent");
+		logintest.setPassword("4H0vk7&#RW7y");
+		logintest.clickLogin();
+		MainPage mainpage = new MainPage(driver);
+		mainpage.clickFiveRecords();
+		
+		
 	}
+
+	
+	/*
+	@Test(description = "Log out")
+	public void LogOut() {
+		LoginPage logintest = new LoginPage(driver);
+		driver.get(adminPanelLink);
+		logintest.setUsername("agent");
+		logintest.setPassword("4H0vk7&#RW7y");
+		logintest.clickLogin();
+		MainPage mainpage = new MainPage(driver);
+		mainpage.clickLogout();
+		Assert.assertTrue(logintest.isPageTitleVisible());
+		
+	}*/
 	
 	
 	
